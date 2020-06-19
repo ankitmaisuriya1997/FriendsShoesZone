@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+
+    <title>{{product.product_name}} - My Awesome Cart</title>
+    <link
+      href="https://www.jqueryscript.net/css/jquerysctipttop.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!--<script src="js/jquery-1.9.1.min.js"></script>-->
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script src="/static/js/jquery.exzoom.js"></script>
+    <link
+      href="/static/css/jquery.exzoom.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      body {
+        min-height: 100vh;
+        background-image: linear-gradient(to top, #ffffff 0%, #ffffff 100%);
+      }
+      #exzoom {
+        width: 400px;
+        /*height: 400px;*/
+      }
+      .container {
+        margin: 50px auto;
+        max-width: 960px;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--    Navigation Bar-->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Friends Shoes Zone</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item {% block homeactive %} {% endblock homeactive %}">
+            <a class="nav-link" href="/"
+              ><b>Home <span class="sr-only">(current)</span></b></a
+            >
+          </li>
+          <li
+            class="nav-item {% block checkoutactive %} {% endblock checkoutactive %}"
+          >
+            <a class="nav-link" href="/checkout/">Checkout</a>
+          </li>
+          <li
+            class="nav-item {% block trackeractive %} {% endblock trackeractive %}"
+          >
+            <a class="nav-link" href="/tracker/">Tracker</a>
+          </li>
+          <li
+            class="nav-item {% block aboutactive %} {% endblock aboutactive %}"
+          >
+            <a class="nav-link" href="/about/">About Us</a>
+          </li>
+          <li
+            class="nav-item {% block contactactive %} {% endblock contactactive %}"
+          >
+            <a class="nav-link" href="/contact/">Contact Us</a>
+          </li>
+        </ul>
+        <form method="get" action="/search/" class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            name="search"
+            id="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+        <button
+          type="button"
+          class="btn btn-secondary mx-2"
+          id="popcart"
+          data-container="body"
+          data-toggle="popover"
+          data-placement="bottom"
+          data-html="true"
+          data-content="Vivamussagittis lacus vel augue laoreet rutrum faucibus."
+        >
+          Cart(<span id="cart">0</span>)
+        </button>
+      </div>
+    </nav>
+
+    <!-- zoom effect -->
+    <div class="container">
+      <div class="exzoom hidden" id="exzoom">
+        <div class="exzoom_img_box">
+          <ul class="exzoom_img_ul">
+            <li><img src="/media/{{product.image}}" /></li>
+            <li><img src="/media/{{product.image1}}" /></li>
+            <li><img src="/media/{{product.image2}}" /></li>
+            <li><img src="/media/{{product.image3}}" /></li>
+            <li><img src="/media/{{product.image4}}" /></li>
+            <!-- <li><img src="/media/{{product.image}}" /></li>
+            <li><img src="/media/{{product.image}}" /></li>
+            <li><img src="/media/{{product.image}}" /></li> -->
+          </ul>
+        </div>
+        <div class="exzoom_nav"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(".container").imagesLoaded(function () {
+        $("#exzoom").exzoom({
+          autoPlay: false,
+        });
+        $("#exzoom").removeClass("hidden");
+      });
+    </script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(["_setAccount", "UA-36251023-1"]);
+      _gaq.push(["_setDomainName", "jqueryscript.net"]);
+      _gaq.push(["_trackPageview"]);
+
+      (function () {
+        var ga = document.createElement("script");
+        ga.type = "text/javascript";
+        ga.async = true;
+        ga.src =
+          ("https:" == document.location.protocol
+            ? "https://ssl"
+            : "http://www") + ".google-analytics.com/ga.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // Find out the cart items from localStorage
+      if (localStorage.getItem('cart') == null) {
+          var cart = {};
+      } else {
+          cart = JSON.parse(localStorage.getItem('cart'));
+      }
+
+      var sum = 0;
+      var totalPrice = 0;
+      if ($.isEmptyObject(cart)) {
+          // if object is  empty
+          mystr = `<p> Your Cart is Empty, Please Add Some Iteams To Your Cart Before Checking Out! </p>`
+          $('#items').append(mystr)
+      } else {
+          for (item in cart) {
+              let name = cart[item][1];
+              let qty = cart[item][0];
+              let itemPrice = cart[item][2];
+              sum = sum + qty;
+              totalPrice = totalPrice + qty* itemPrice;
+              mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                  ${name}
+                  <span class="badge badge-primary badge-pill">${qty}</span>
+              </li>`
+              $('#items').append(mystr)
+          }
+
+      }
+      document.getElementById('cart').innerHTML = sum;
+      document.getElementById('totalPrice').innerHTML = totalPrice;
+
+      $('#items_json').val(JSON.stringify(cart));
+      {% if thank %}
+      alert('Thank for ordering with us. Your order id is {{id}}. Use it to Track your order using our order tracker');
+      localStorage.clear();
+      document.location = "/";
+      {% endif %}
+      $('#amount').val($('#totalPrice').html());
+    </script>
+  </body>
+</html>
